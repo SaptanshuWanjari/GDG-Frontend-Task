@@ -77,10 +77,4 @@ If you'd like, I can add a `CONTRIBUTING.md`, GitHub Actions for CI, or screensh
 - `app/components/Navbar.tsx` — navigation and theme toggle
 - `components/ui/` — reusable UI primitives
 
-## License
 
-No license specified. Add a `LICENSE` file if you wish to publish this project under an open-source license.
-
----
-
-If you want, I can also add a demo screenshot, CI workflow, or CONTRIBUTING guide next. Tell me which and I'll add it.
