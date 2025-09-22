@@ -28,16 +28,16 @@ const Card = ({ img, title, content, color = "primary" }: props) => {
     colorClasses[color as keyof typeof colorClasses] || colorClasses.primary;
 
   return (
-    <div className="flex flex-col items-center justify-center mb-20 select-none w-full relative overflow-visible">
+    <div className="flex flex-col items-center justify-center mb-32 select-none w-full relative overflow-visible">
       {/* Single colored progress indicator */}
       <span
         className={`${progressColor} w-[45%] h-3 rounded-full select-none shadow-md mb-4`}
       />
 
       {/* Outer container - completely separate light/dark styling */}
-      <div className="w-[20rem] sm:w-[22rem] h-64 flex items-center justify-center backdrop-blur-md rounded-3xl select-none border shadow-xl hover:shadow-2xl transition-all duration-700 overflow-visible hover:scale-[1.03] bg-gradient-to-br from-white/95 via-gray-50/90 to-white/95 border-gray-200/60 hover:from-white hover:via-gray-50/95 hover:to-white dark:bg-gradient-to-br dark:from-slate-800/60 dark:via-slate-700/40 dark:to-slate-800/20 dark:border-slate-600/50 dark:shadow-slate-900/50 dark:hover:shadow-complementary/20">
+      <div className="w-[20rem] sm:w-[22rem] h-64 flex items-center justify-center backdrop-blur-md rounded-3xl select-none border shadow-xl hover:shadow-2xl transition-all duration-700 overflow-visible hover:scale-[1.03] bg-white border-gray-300 hover:bg-white dark:bg-gradient-to-br dark:from-slate-800/60 dark:via-slate-700/40 dark:to-slate-800/20 dark:border-slate-600/50 dark:shadow-slate-900/50 dark:hover:shadow-complementary/20">
         {/* Inner card - completely separate light/dark styling */}
-        <div className="backdrop-blur-sm w-[19rem] sm:w-[21rem] h-60 p-6 rounded-2xl select-none border transition-all duration-700 hover:scale-[1.01] hover:shadow-xl relative overflow-visible bg-white/90 border-gray-200/50 hover:bg-white text-gray-800 dark:bg-slate-800/90 dark:border-slate-600/60 dark:hover:shadow-complementary/30 dark:hover:bg-slate-800/95 dark:text-white">
+        <div className="backdrop-blur-sm w-[19rem] sm:w-[21rem] h-60 p-6 rounded-2xl select-none border transition-all duration-700 hover:scale-[1.01] hover:shadow-xl relative overflow-visible bg-white border-gray-300 hover:bg-white text-black dark:bg-slate-800/90 dark:border-slate-600/60 dark:hover:shadow-complementary/30 dark:hover:bg-slate-800/95 dark:text-white">
           <div className="flex items-center justify-between flex-col h-full select-none">
             {/* Top section with image and title */}
             <div className="flex flex-col items-center space-y-4 flex-grow justify-center">
@@ -55,7 +55,7 @@ const Card = ({ img, title, content, color = "primary" }: props) => {
               </div>
 
               {/* Clean title with proper theme handling */}
-              <h1 className="text-2xl sm:text-3xl font-bold select-none text-center text-gray-800 dark:text-white transition-all duration-500 hover:scale-105 hover:text-primary dark:hover:text-complementary">
+              <h1 className="text-2xl sm:text-3xl font-bold select-none text-center text-white! dark:text-white transition-all duration-500 hover:scale-105 hover:text-primary dark:hover:text-complementary">
                 {title}
               </h1>
             </div>
@@ -69,7 +69,7 @@ const Card = ({ img, title, content, color = "primary" }: props) => {
               >
                 <BiChevronDown
                   size={32}
-                  className="text-gray-600 group-hover:text-primary dark:text-gray-300 dark:group-hover:text-complementary transition-all duration-700 select-none group-hover:drop-shadow-md"
+                  className="text-black group-hover:text-primary dark:text-gray-300 dark:group-hover:text-complementary transition-all duration-700 select-none group-hover:drop-shadow-md"
                 />
               </div>
 

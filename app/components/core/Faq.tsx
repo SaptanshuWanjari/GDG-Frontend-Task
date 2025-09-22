@@ -33,7 +33,7 @@ const questions = [
 const Faq = () => {
   return (
     <motion.div
-      className="w-full flex flex-col items-center justify-center py-12 sm:py-14 bg-background text-foreground px-4"
+      className="w-full flex flex-col items-center justify-center pt-0 pb-12 sm:pt-0 sm:pb-14 bg-background text-foreground px-4"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeInOut", delay: 0.2 }}

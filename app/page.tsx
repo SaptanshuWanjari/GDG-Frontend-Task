@@ -36,7 +36,7 @@ export default function Home() {
           <Technologies />
         </section>
 
-        <section className="mb-20">
+        <section className="mb-20 -mt-20">
           <Faq />
         </section>
       </main>

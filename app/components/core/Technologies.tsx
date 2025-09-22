@@ -2,6 +2,7 @@
 import React from "react";
 import Card from "../Card";
 import { motion } from "framer-motion";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -56,6 +57,17 @@ const technologies = [
 ];
 
 const Technologies = () => {
+  const autoplayPlugin = React.useRef(
+    Autoplay({ 
+      delay: 4000, 
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+      playOnInit: true,
+      jump: false,
+      stopOnFocusIn: false
+    })
+  );
+
   return (
     <motion.section
       className="mb-16 bg-background text-foreground py-8"
@@ -72,70 +84,77 @@ const Technologies = () => {
           Domains That Excite Us to Collaborate and Teach
         </p>
       </div>
-      {/* Carousel with x-axis overflow hidden but y-axis visible for tooltips */}
+      {/* Carousel with full overflow visible for tooltips */}
       <motion.div
-        className="relative overflow-x-hidden overflow-y-visible pb-48"
-        initial={{ opacity: 0, y: 50 }}
+        className="relative overflow-visible pb-8"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{
-          type: "spring",
-          stiffness: 80,
-          damping: 20,
-          duration: 0.8,
+          duration: 1,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 0.2,
         }}
       >
         <Carousel
-          className="w-full mx-auto h-auto "
+          className="w-full mx-auto h-auto overflow-visible"
+          plugins={[autoplayPlugin.current]}
           opts={{
-            align: "center",
+            align: "start",
             loop: true,
-            skipSnaps: false,
+            skipSnaps: true,
             dragFree: true,
-            containScroll: "trimSnaps",
-            duration: 25,
+            containScroll: false,
+            duration: 35,
+            startIndex: 0,
+            slidesToScroll: 1,
+            inViewThreshold: 0.7,
           }}
+          onMouseEnter={autoplayPlugin.current.stop}
+          onMouseLeave={autoplayPlugin.current.reset}
         >
           <CarouselContent
-            className="flex transition-transform duration-500 ease-out"
+            className="flex overflow-visible"
             style={{
               willChange: "transform",
               backfaceVisibility: "hidden",
               perspective: "1000px",
+              transformStyle: "preserve-3d",
             }}
           >
-            {technologies.map((tech) => (
+            {technologies.map((tech, index) => (
               <CarouselItem
                 key={tech.name}
-                className="basis-full sm:basis-1/2 lg:basis-1/4 flex items-start justify-center px-2 py-8 min-h-[500px]"
+                className="basis-full sm:basis-1/2 lg:basis-1/4 flex items-start justify-center px-2 py-8 pb-25 min-h-[500px] overflow-visible"
               >
                 <motion.div
-                  initial={false}
+                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 25,
                     duration: 0.8,
+                    delay: index * 0.15,
+                    ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier for smooth easing
                   }}
                   whileHover={{
-                    scale: 1.03,
+                    scale: 1.05,
+                    y: -8,
                     transition: {
-                      type: "spring",
-                      stiffness: 200,
                       duration: 0.4,
+                      ease: [0.25, 0.46, 0.45, 0.94],
                     },
                   }}
                   whileTap={{
-                    scale: 0.98,
+                    scale: 0.95,
                     transition: {
-                      type: "spring",
-                      stiffness: 200,
-                      duration: 0.2,
+                      duration: 0.15,
+                      ease: [0.25, 0.46, 0.45, 0.94],
                     },
                   }}
-                  className="opacity-0 translate-y-5 h-full flex items-start justify-center"
+                  className="h-full flex items-start justify-center"
+                  style={{
+                    transformOrigin: "center center",
+                  }}
                 >
                   <Card
                     img={tech.icon}
@@ -147,8 +166,8 @@ const Technologies = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-2 sm:left-4 hover:bg-primary/10 transition-colors" />
-          <CarouselNext className="right-2 sm:right-4 hover:bg-primary/10 transition-colors" />
+          
+        
         </Carousel>
 
         {/* Improved blur overlay */}

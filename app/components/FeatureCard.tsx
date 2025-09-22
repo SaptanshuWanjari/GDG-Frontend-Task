@@ -47,34 +47,41 @@ const FeatureCard = ({
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.3, ease: "easeInOut", delay: 0 }}
     >
-      <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-[50px] text-foreground font-bold text-center`}>
+      <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[70px] text-foreground font-bold text-center mb-4 md:mb-6 lg:mb-8`}>
         {variants[variant].title}
       </h1>
       <span
-        className={`border-b-4 rounded-md self-center ${variantBorderClass[variant]} w-40 sm:w-56 block`}
+        className={`border-b-4 rounded-md self-center ${variantBorderClass[variant]} w-40 sm:w-56 md:w-64 lg:w-72 xl:w-80 block mb-6 md:mb-8 lg:mb-10`}
       />
-      <div className={`flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-6 md:gap-2`}>
-        <Image
-          src={variants[variant].imageSrc ?? ""}
-          alt={variants[variant].title ?? ""}
-          width={533}
-          height={533}
-          className="pt-2 w-64 sm:w-80 md:w-[533px] h-auto"
-        />
+      <div className={`flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-6 md:gap-4 lg:gap-6 xl:gap-8`}>
+        <div className="flex-shrink-0">
+          <Image
+            src={variants[variant].imageSrc ?? ""}
+            alt={variants[variant].title ?? ""}
+            width={533}
+            height={533}
+            className="pt-2 w-64 sm:w-80 md:w-96 lg:w-[420px] xl:w-[480px] 2xl:w-[533px] h-auto"
+          />
+        </div>
         <div
-          className={`flex items-center rounded-xl px-4 md:px-6 py-4 transition-all duration-300 ${
+          className={`flex items-center justify-center rounded-xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-8 lg:py-10 transition-all duration-300 ${
             variantBorderClass[variant]
           } 
             ${reverse ? `border-l-8` : `border-r-8`} 
-            ${reverse ? "" : "justify-end"}
+            flex-1 min-h-[200px] md:min-h-[250px] lg:min-h-[300px]
           `}
         >
           <p
-            className={`text-foreground font-bold text-base sm:text-lg md:text-xl ${
+            className={`text-foreground font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl ${
               reverse ? "text-left" : "text-right"
-            } w-full md:w-[60%] leading-relaxed`}
+            } w-full leading-relaxed md:leading-loose lg:leading-loose`}
           >
-            {variants[variant].description ?? ""}
+            {variants[variant].description?.split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                {index < variants[variant].description!.split('\n').length - 1 && <br />}
+              </span>
+            )) ?? ""}
           </p>
         </div>
       </div>

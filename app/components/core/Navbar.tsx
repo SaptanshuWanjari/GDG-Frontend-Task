@@ -51,21 +51,19 @@ const Navbar = () => {
 
       {/* Mobile menu panel */}
       {open && (
-        <div className="md:hidden absolute top-20 left-0 right-0 px-4  backdrop-blur-[3px] shadow-lg z-50 animate-slide-down-fade">
-          <div className=" border border-border rounded-lg shadow-lg overflow-hidden">
-            <nav className="flex flex-col p-3 gap-1 text-foreground">
-              {links.map((l) => (
-                <Link
-                  key={l.label}
-                  href={l.href}
-                  className="px-2 py-2 rounded-md hover:bg-accent/50"
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-sm animate-slide-down-fade z-50">
+          <nav className="flex flex-col p-4 gap-2 text-foreground">
+            {links.map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                className="px-3 py-2 rounded-md hover:bg-accent/80 text-lg"
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       )}
     </div>

@@ -10,10 +10,10 @@ interface TooltipProps {
 
 const Tooltip = ({ content, isVisible, position = "bottom" }: TooltipProps) => {
   const positionClasses = {
-    top: "bottom-full left-1/2 -translate-x-1/2 mb-2",
-    bottom: "top-full left-1/2 -translate-x-1/2 mt-2",
-    left: "right-full top-1/2 -translate-y-1/2 mr-2",
-    right: "left-full top-1/2 -translate-y-1/2 ml-2",
+    top: "bottom-full left-1/2 -translate-x-1/2 mb-6",
+    bottom: "top-full left-1/2 -translate-x-1/2 mt-6",
+    left: "right-full top-1/2 -translate-y-1/2 mr-6",
+    right: "left-full top-1/2 -translate-y-1/2 ml-6",
   };
 
   const arrowClasses = {
@@ -44,16 +44,20 @@ const Tooltip = ({ content, isVisible, position = "bottom" }: TooltipProps) => {
             damping: 15,
           }}
           className={`absolute z-[99999] ${positionClasses[position]} pointer-events-none`}
-          style={{ zIndex: 99999 }}
+          style={{
+            zIndex: 99999,
+            minWidth: "250px",
+            maxWidth: "350px",
+          }}
         >
-          <div className="bg-white/98 dark:bg-slate-800/95 backdrop-blur-lg border border-gray-200/80 dark:border-slate-600/60 rounded-xl shadow-xl dark:shadow-slate-900/30 dark:shadow-complementary/10 min-w-48 max-w-sm w-auto p-4 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-complementary/20 max-h-none">
+          <div className="bg-white dark:bg-slate-800/95 border border-gray-300 dark:border-slate-600/60 rounded-xl shadow-xl dark:shadow-slate-900/30 dark:shadow-complementary/10 min-w-64 max-w-80 w-auto p-4 transition-all duration-300 hover:shadow-2xl dark:hover:shadow-complementary/20">
             {/* Arrow */}
             <div
               className={`absolute w-0 h-0 border-[6px] ${arrowClasses[position]}`}
             />
 
             {/* Content with clean theme colors - auto height */}
-            <div className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed font-medium whitespace-normal break-words">
+            <div className="text-sm text-black dark:text-gray-200 leading-relaxed font-medium whitespace-normal break-words">
               {content}
             </div>
           </div>
