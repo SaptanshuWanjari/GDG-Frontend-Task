@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GDG Frontend Task
 
-## Getting Started
+A marketing/demo frontend built with Next.js and Tailwind CSS for the GDG Frontend Task. The site demonstrates reusable UI components, theming, and a small feature set suitable for showcasing front-end skills.
 
-First, run the development server:
+## Quick highlights
 
-```bash
+- Next.js 15 + React 19
+- Tailwind CSS for styling
+- Light/Dark theme toggle
+- Reusable components: Accordion, Card, Carousel, Tooltip, Theme provider
+- Organized under `app/` (Next.js App Router) and `components/ui`
+
+## Repository layout
+
+- `app/` — Next.js application routes and layout, plus core components (Hero, Navbar, Footer, etc.)
+- `app/components/` — page sections and composed components
+- `components/ui/` — small reusable UI primitives (Radix-based where applicable)
+- `public/` — images, fonts and static assets
+- `lib/` — small utilities
+
+## Tech stack and versions
+
+See `package.json` for exact versions. Key technologies include:
+
+- Next.js 15
+- React 19
+- Tailwind CSS 4
+- TypeScript 5
+- Radix UI primitives
+
+## Local development (Windows / PowerShell)
+
+Open PowerShell in the project root (`D:\GDG Frontend Task`) and run:
+
+```powershell
+# install dependencies
+npm install
+
+# start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app will be served at http://localhost:3000 by default.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+# build for production
+npm run build
 
-## Learn More
+# start production server
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## NPM scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` — run Next.js in development (uses Turbopack by default)
+- `npm run build` — build optimized production assets
+- `npm start` — start production server
+- `npm run lint` — run ESLint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Recommended: Deploy to Vercel for straightforward Next.js hosting. You can also deploy to any host that supports Node.js and Next.js.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Fork or clone the repository
+- Create a feature branch: `git checkout -b feature/your-change`
+- Commit and open a pull request
+
+If you'd like, I can add a `CONTRIBUTING.md`, GitHub Actions for CI, or screenshots to this README.
+
+## Useful files to inspect
+
+- `app/components/Hero.tsx` — the hero section
+- `app/components/Navbar.tsx` — navigation and theme toggle
+- `components/ui/` — reusable UI primitives
+
+## License
+
+No license specified. Add a `LICENSE` file if you wish to publish this project under an open-source license.
+
+---
+
+If you want, I can also add a demo screenshot, CI workflow, or CONTRIBUTING guide next. Tell me which and I'll add it.
