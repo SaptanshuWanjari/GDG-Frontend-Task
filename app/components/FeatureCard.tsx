@@ -41,48 +41,57 @@ const FeatureCard = ({
 }) => {
   return (
     <motion.div
-      className="p-2 md:px-8 w-full flex justify-center flex-col bg-background text-foreground"
+      className="p-2 md:px-6 w-full flex justify-center flex-col bg-background text-foreground"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.3, ease: "easeInOut", delay: 0 }}
     >
-      <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[70px] text-foreground font-bold text-center mb-4 md:mb-6 lg:mb-8`}>
+      {/* Title */}
+      <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl text-foreground font-bold text-center mb-3 md:mb-4`}>
         {variants[variant].title}
       </h1>
+
+      {/* Accent underline */}
       <span
-        className={`border-b-4 rounded-md self-center ${variantBorderClass[variant]} w-40 sm:w-56 md:w-64 lg:w-72 xl:w-80 block mb-6 md:mb-8 lg:mb-10`}
+        className={`border-b-4 rounded-md self-center ${variantBorderClass[variant]} w-36 sm:w-48 md:w-56 lg:w-56 xl:w-64 block mb-5 md:mb-6`}
       />
-      <div className={`flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-6 md:gap-4 lg:gap-6 xl:gap-8`}>
-        <div className="flex-shrink-0">
-          <Image
-            src={variants[variant].imageSrc ?? ""}
-            alt={variants[variant].title ?? ""}
-            width={533}
-            height={533}
-            className="pt-2 w-64 sm:w-80 md:w-96 lg:w-[420px] xl:w-[480px] 2xl:w-[533px] h-auto"
-          />
-        </div>
+
+      {/* Center the card content with a max width so the whole card stays centered on the page */}
+      <div className="w-full max-w-4xl mx-auto">
         <div
-          className={`flex items-center justify-center rounded-xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-6 md:py-8 lg:py-10 transition-all duration-300 ${
-            variantBorderClass[variant]
-          } 
-            ${reverse ? `border-l-8` : `border-r-8`} 
-            flex-1 min-h-[200px] md:min-h-[250px] lg:min-h-[300px]
-          `}
+          className={`flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center justify-center gap-4 md:gap-6 lg:gap-6 xl:gap-8`}
         >
-          <p
-            className={`text-foreground font-bold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl ${
-              reverse ? "text-left" : "text-right"
-            } w-full leading-relaxed md:leading-loose lg:leading-loose`}
+          {/* Image - constrained sizes to keep card compact */}
+          <div className="flex-shrink-0">
+            <Image
+              src={variants[variant].imageSrc ?? ""}
+              alt={variants[variant].title ?? ""}
+              width={533}
+              height={533}
+              className="pt-2 w-44 sm:w-52 md:w-56 lg:w-48 xl:w-56 h-auto"
+            />
+          </div>
+
+          {/* Text/content */}
+          <div
+            className={`flex items-center justify-center rounded-xl px-4 sm:px-6 md:px-6 lg:px-8 py-5 md:py-6 lg:py-6 transition-all duration-300 ${
+              variantBorderClass[variant]
+            } ${reverse ? `border-l-8` : `border-r-8`} flex-1 max-w-prose min-h-[160px] md:min-h-[200px] lg:min-h-[180px] xl:min-h-[200px]`}
           >
-            {variants[variant].description?.split('\n').map((line, index) => (
-              <span key={index}>
-                {line}
-                {index < variants[variant].description!.split('\n').length - 1 && <br />}
-              </span>
-            )) ?? ""}
-          </p>
+            <p
+              className={`text-foreground font-semibold text-sm sm:text-base md:text-base lg:text-base xl:text-lg text-center ${
+                reverse ? "text-left" : "text-right"
+              } w-full leading-relaxed md:leading-loose lg:leading-relaxed`}
+            >
+              {variants[variant].description?.split("\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  {index < variants[variant].description!.split("\n").length - 1 && <br />}
+                </span>
+              )) ?? ""}
+            </p>
+          </div>
         </div>
       </div>
     </motion.div>

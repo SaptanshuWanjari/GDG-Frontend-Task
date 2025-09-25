@@ -76,5 +76,3 @@ If you'd like, I can add a `CONTRIBUTING.md`, GitHub Actions for CI, or screensh
 - `app/components/Hero.tsx` — the hero section
 - `app/components/Navbar.tsx` — navigation and theme toggle
 - `components/ui/` — reusable UI primitives
-
-
